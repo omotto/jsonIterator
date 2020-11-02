@@ -15,6 +15,7 @@ type MyStruct struct {
 }
 
 func TestJSONIterator(t *testing.T) {
+	numIters := 0
 	if file, err := os.Open("test.txt"); err == nil {
 		iter := NewJSONIterator(file, MyStruct{})
 		for value, ok := iter.Next(); ok; value, ok = iter.Next() {
@@ -26,6 +27,7 @@ func TestJSONIterator(t *testing.T) {
 					log.Println(jsonValue.Operation)
 					log.Println(jsonValue.Entity)
 					log.Println(jsonValue.Update)
+					numIters++
 				} else {
 					t.Error(err)
 				}
@@ -37,4 +39,8 @@ func TestJSONIterator(t *testing.T) {
 	} else {
 		t.Error(err)
 	}
+	if numIters != 12 {
+		t.Error("missing entries")
+	}
+
 }
