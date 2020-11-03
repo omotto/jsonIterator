@@ -1,4 +1,4 @@
-package jsonIterator
+package jsoniterator
 
 import (
 	"encoding/json"
@@ -25,7 +25,7 @@ func (i *iterator) Error() error {
 	return i.err
 }
 
-// Generator function that produces data
+// NewJSONIterator Generator function that produces data
 func NewJSONIterator(f *os.File, jsonLine interface{}) iterator {
 	var (
 		chain    []byte

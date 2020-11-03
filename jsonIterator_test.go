@@ -1,4 +1,4 @@
-package jsonIterator
+package jsoniterator
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 )
 
 type MyStruct struct {
-	Id			int64 						`json:"id"`
+	ID			int64 						`json:"id"`
 	Entity		string						`json:"entity"`
 	Update		[]map[string]interface{}	`json:"update"`
 	Operation	string						`json:"operation"`
@@ -23,7 +23,7 @@ func TestJSONIterator(t *testing.T) {
 				jsonValue := MyStruct{}
 				jsonString, _ := json.Marshal(value)
 				if err := json.Unmarshal(jsonString, &jsonValue); err == nil {
-					log.Println(jsonValue.Id)
+					log.Println(jsonValue.ID)
 					log.Println(jsonValue.Operation)
 					log.Println(jsonValue.Entity)
 					log.Println(jsonValue.Update)
@@ -42,5 +42,4 @@ func TestJSONIterator(t *testing.T) {
 	if numIters != 12 {
 		t.Error("missing entries")
 	}
-
 }
